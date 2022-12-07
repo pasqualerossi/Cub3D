@@ -6,13 +6,13 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:39:39 by prossi            #+#    #+#             */
-/*   Updated: 2022/10/28 12:40:23 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/07 18:18:08 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-int	ft_arrlen(char **arr)
+int	ft_array_length(char **arr)
 {
 	int	i;
 
@@ -40,7 +40,7 @@ void	ft_free(char ***arr)
 	*arr = NULL;
 }
 
-char	**ft_realloc(char **ptr, int size)
+char	**ft_reallocation(char **ptr, int size)
 {
 	char	**new_ptr;
 	int		i;
@@ -60,7 +60,7 @@ char	**ft_realloc(char **ptr, int size)
 	return (new_ptr);
 }
 
-const char	*get_ext(const char *file)
+const char	*get_exit(const char *file)
 {
 	const char	*dot;
 

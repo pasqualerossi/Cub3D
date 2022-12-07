@@ -6,11 +6,11 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:43:34 by prossi            #+#    #+#             */
-/*   Updated: 2022/10/28 12:43:57 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/07 18:17:38 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 static int	is_closed(int i, int j)
 {
@@ -56,7 +56,7 @@ int	validate_map(void)
 	int	i;
 	int	j;
 
-	if (ft_arrlen(data()->map) < 3 || check_chars() != 1)
+	if (ft_array_length(data()->map) < 3 || check_characters() != 1)
 		return (1);
 	i = 0;
 	while (data()->map[i])

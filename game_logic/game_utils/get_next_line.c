@@ -5,75 +5,119 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 13:15:44 by prossi            #+#    #+#             */
-/*   Updated: 2022/10/28 13:17:17 by prossi           ###   ########.fr       */
+/*   Created: 2022/12/01 12:50:28 by prossi            #+#    #+#             */
+/*   Updated: 2022/12/07 18:18:11 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-static char	*function_name(int fd, char *buf, char *backup)
+int	ft_start(char **buf, int fd, int *ret)
 {
-	int		read_line;
-	char	*char_temp;
-
-	read_line = 1;
-	while (read_line != '\0')
+	buf[fd] = malloc(BUFFER_SIZE + 1);
+	if (!buf[fd])
+		return (-1);
+	*ret = read(fd, buf[fd], BUFFER_SIZE);
+	if (*ret < 0)
 	{
-		read_line = read(fd, buf, BUFFER_SIZE);
-		if (read_line == -1)
+		free(buf[fd]);
+		return (-1);
+	}
+	buf[fd][*ret] = 0;
+	return (0);
+}
+
+int	ft_in_while_a(char **buf, char *cat, char **tmp)
+{
+	int	i;
+
+	i = 0;
+	while ((*buf)[i])
+	{
+		cat[i] = (*buf)[i];
+		i++;
+	}
+	i = 0;
+	while ((*tmp)[i])
+	{
+		cat[i + ft_strlen(*buf)] = (*tmp)[i];
+		i++;
+	}
+	cat[i + ft_strlen(*buf)] = 0;
+	free(*tmp);
+	free(*buf);
+	*buf = cat;
+	return (1);
+}
+
+int	ft_in_while(char **buf, int fd, int *ret)
+{
+	char	*tmp;
+	char	*cat;
+
+	tmp = malloc(BUFFER_SIZE + 1);
+	if (!tmp)
+		return (-1);
+	*ret = read(fd, tmp, BUFFER_SIZE);
+	if (*ret < 0)
+	{
+		free(tmp);
+		return (-1);
+	}
+	tmp[*ret] = 0;
+	cat = malloc(ft_strlen(buf[fd]) + ft_strlen(tmp) + 1);
+	if (!cat)
+	{
+		free(tmp);
+		return (-1);
+	}
+	return ((ft_in_while_a(&(buf[fd]), cat, &tmp)));
+}
+
+int	ft_if_new_line(char **buf, char **line)
+{
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	while ((*buf)[i] != 10)
+		i++;
+	*line = ft_strdup(*buf);
+	if (!*line)
+		return (-1);
+	(*line)[i] = 0;
+	tmp = ft_strdup(&((*buf)[i + 1]));
+	if (!tmp)
+		return (-1);
+	free((*buf));
+	*buf = tmp;
+	return (1);
+}
+
+int	get_next_line(int fd, char **line)
+{
+	int			ret;
+	static char	*buf[OPEN_MAX];
+
+	ret = BUFFER_SIZE;
+	if (fd >= 0 && BUFFER_SIZE > 0 && fd < OPEN_MAX)
+	{
+		if (!buf[fd] && ft_start(buf, fd, &ret))
+			return (-1);
+		while (!ft_new_line(buf[fd]) && BUFFER_SIZE == ret)
+			if (ft_in_while(buf, fd, &ret) == -1)
+				return (-1);
+		if (ft_new_line(buf[fd]))
+			return (ft_if_new_line(&(buf[fd]), line));
+		else
+		{
+			*line = ft_strdup(buf[fd]);
+			if (!*line)
+				return (-1);
+			free(buf[fd]);
+			buf[fd] = NULL;
 			return (0);
-		else if (read_line == 0)
-			break ;
-		buf[read_line] = '\0';
-		if (!backup)
-			backup = ft_strdup("");
-		char_temp = backup;
-		backup = ft_strjoin(char_temp, buf);
-		free(char_temp);
-		char_temp = NULL;
-		if (ft_strchr (buf, '\n'))
-			break ;
+		}
 	}
-	return (backup);
-}
-
-static char	*extract(char *line)
-{
-	size_t	count;
-	char	*backup;
-
-	count = 0;
-	while (line[count] != '\n' && line[count] != '\0')
-		count++;
-	if (line[count] == '\0' || line[1] == '\0')
-		return (0);
-	backup = ft_substr(line, count + 1, ft_strlen(line) - count);
-	if (*backup == '\0')
-	{
-		free(backup);
-		backup = NULL;
-	}
-	line[count + 1] = '\0';
-	return (backup);
-}
-
-char	*get_next_line(int fd)
-{
-	char		*line;
-	char		*buf;
-	static char	*backup;
-
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
-	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buf)
-		return (0);
-	line = function_name(fd, buf, backup);
-	free(buf);
-	buf = NULL;
-	if (!line)
-		return (NULL);
-	backup = extract(line);
-	return (line);
+	return (-1);
 }

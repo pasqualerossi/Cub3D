@@ -2,15 +2,19 @@ NAME := cub3d
 
 CC := gcc
 
-CFLAGS := -Wall -Wextra -Werror -Iheaders/
+CFLAGS := -Wall -Wextra -Werror -D BUFFER_SIZE=100
 
-SOURCE := game_logic/*.c
+GAME_LOGIC := game_logic/*.c
+GAME_MAP := game_logic/game_map/*.c
+GAME_PLAYER := game_logic/game_player/*.c
+GAME_UTILS := game_logic/game_utils/*.c
+
 LIBRARY := -Lminilibx -lmlx -framework OpenGL -framework AppKit
 MINILIBX := minilibx/
 
 all:
 	make -C $(MINILIBX)
-	$(CC) $(CFLAGS) $(SOURCE) $(LIBRARY) -o $(NAME)
+	$(CC) $(CFLAGS) $(GAME_LOGIC) $(GAME_MAP) $(GAME_PLAYER) $(GAME_UTILS) $(LIBRARY) -o $(NAME)
 
 clean:
 

@@ -6,24 +6,27 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:53:48 by prossi            #+#    #+#             */
-/*   Updated: 2022/10/28 12:54:15 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/07 19:40:37 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-static void	set_values(double dir_x, double dir_y, double pla_x, double pla_y)
+// Due to Norminette, the static function below had to be on 2 lines.
+
+static void	set_values(double direction_x, double direction_y, double pla_x,
+		double pla_y)
 {
-	data()->var.dir_x = dir_x;
-	data()->var.dir_y = dir_y;
+	data()->var.direction_x = direction_x;
+	data()->var.direction_y = direction_y;
 	data()->var.plane_x = pla_x;
 	data()->var.plane_y = pla_y;
 }
 
 static void	init_vectors(int x, int y)
 {
-	data()->var.pos_x = x + 0.5;
-	data()->var.pos_y = y + 0.5;
+	data()->var.position_x = x + 0.5;
+	data()->var.position_y = y + 0.5;
 	if (data()->map[y][x] == 'N')
 		set_values(0, -1, 0.66, 0);
 	else if (data()->map[y][x] == 'S')
@@ -34,7 +37,7 @@ static void	init_vectors(int x, int y)
 		set_values(-1, 0, 0, -0.66);
 }
 
-int	check_chars(void)
+int	check_characters(void)
 {
 	int	i;
 	int	j;

@@ -6,11 +6,11 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 15:15:52 by prossi            #+#    #+#             */
-/*   Updated: 2022/10/28 15:19:47 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/07 18:58:17 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	ft_atoi(const char *str)
 {
@@ -57,21 +57,13 @@ void	ft_bzero(void *s, size_t n)
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	b;
-	void	*p;
+	void	*ret;
 
-	if (count == 0 || size == 0)
-	{
-		count = 1;
-		size = 1;
-	}
-	b = count * size;
-	p = malloc(b);
-	if (p == NULL)
+	ret = malloc(size * count);
+	if (!ret)
 		return (NULL);
-	else
-		ft_bzero(p, b);
-	return (p);
+	ft_bzero(ret, count * size);
+	return (ret);
 }
 
 char	*ft_strchr(const char *s, int i)

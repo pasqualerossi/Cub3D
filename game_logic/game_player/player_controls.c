@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboard_controls_and_player_rotate.c              :+:      :+:    :+:   */
+/*   player_controls.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:30:13 by prossi            #+#    #+#             */
-/*   Updated: 2022/10/28 15:38:16 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/07 18:16:46 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	key_press(int keycode)
 {
 	if (keycode == ESC)
-		quit();
+		quit_game();
 	else if (keycode == W)
 		data()->key.w = 1;
 	else if (keycode == S)

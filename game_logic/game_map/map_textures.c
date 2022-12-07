@@ -6,11 +6,11 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:21:50 by prossi            #+#    #+#             */
-/*   Updated: 2022/10/28 12:48:33 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/07 19:54:57 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 static int	textures(char *line)
 {
@@ -19,7 +19,7 @@ static int	textures(char *line)
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (1);
-	if (ft_arrlen(tokens) != 2)
+	if (ft_array_length(tokens) != 2)
 		return (1);
 	if (ft_strncmp(tokens[0], "NO", 3) == 0)
 		data()->xpm[0] = ft_strdup(tokens[1]);
@@ -43,7 +43,7 @@ static int	rgb(char *line)
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (1);
-	if (ft_arrlen(tokens) != 2)
+	if (ft_array_length(tokens) != 2)
 		return (1);
 	if (ft_strncmp(tokens[0], "F", 1) == 0)
 		data()->rgb[0] = ft_strdup(tokens[1]);
@@ -64,8 +64,8 @@ int	parse_info(int fd)
 	data()->rgb = ft_calloc(sizeof(char *) , 3);
 	if (!data()->rgb)
 		return (1);
-	while (ft_arrlen(data()->xpm) != 4 \
-		|| ft_arrlen(data()->rgb) != 2)
+	while (ft_array_length(data()->xpm) != 4 \
+		|| ft_array_length(data()->rgb) != 2)
 	{
 		ret = get_next_line(fd, &line);
 		if (ret == -1)

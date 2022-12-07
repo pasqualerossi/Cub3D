@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_map_colours.c                                 :+:      :+:    :+:   */
+/*   map_colours.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:49:48 by prossi            #+#    #+#             */
-/*   Updated: 2022/10/28 12:50:11 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/07 19:09:09 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 static int	*validate_rgb(char **arr)
 {
@@ -48,7 +48,7 @@ void	convert_colors(int *rgb, int i)
 	}
 }
 
-int	init_colors(void)
+int	init_colours(void)
 {
 	int				i;
 	char			**tmp;
