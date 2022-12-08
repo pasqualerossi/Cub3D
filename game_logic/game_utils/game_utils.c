@@ -6,58 +6,58 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:39:39 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/07 18:18:08 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/08 14:31:25 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	ft_array_length(char **arr)
+int	ft_array_length(char **array)
 {
 	int	i;
 
 	i = 0;
-	while (arr[i])
+	while (array[i])
 	{
 		i++;
 	}
 	return (i);
 }
 
-void	ft_free(char ***arr)
+void	ft_free(char ***array)
 {
 	int	i;
 
-	if (!*arr)
-		return ;
 	i = 0;
-	while ((*arr)[i])
+	if (!*array)
+		return ;
+	while ((*array)[i])
 	{
-		free((*arr)[i]);
+		free((*array)[i]);
 		i++;
 	}
-	free(*arr);
-	*arr = NULL;
+	free(*array);
+	*array = NULL;
 }
 
-char	**ft_reallocation(char **ptr, int size)
+char	**ft_reallocation(char **pointer, int size)
 {
-	char	**new_ptr;
 	int		i;
+	char	**new_pointer;
 
 	i = 0;
-	new_ptr = malloc(sizeof(char *) * size);
-	if (!new_ptr)
+	new_pointer = malloc(sizeof(char *) * size);
+	if (!new_pointer)
 		return (NULL);
-	while (ptr[i])
+	while (pointer[i])
 	{
-		new_ptr[i] = ptr[i];
+		new_pointer[i] = pointer[i];
 		i++;
 	}
-	new_ptr[i] = NULL;
-	new_ptr[i + 1] = NULL;
-	free(ptr);
-	return (new_ptr);
+	new_pointer[i] = NULL;
+	new_pointer[i + 1] = NULL;
+	free(pointer);
+	return (new_pointer);
 }
 
 const char	*get_exit(const char *file)
@@ -70,7 +70,7 @@ const char	*get_exit(const char *file)
 	return (dot + 1);
 }
 
-unsigned long	rgb_to_hex(int r, int g, int b)
+unsigned long	rgb_to_hex(int red, int green, int blue)
 {
-	return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
+	return (((red & 0xff) << 16) + ((green & 0xff) << 8) + (blue & 0xff));
 }

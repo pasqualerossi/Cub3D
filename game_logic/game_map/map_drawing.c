@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:12:06 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/07 18:17:05 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/08 14:39:58 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	mlx_place_pixel(int x, int y, int color)
 {
-	char	*dst;
+	char	*distance;
 
-	dst = data()->img.addr + \
+	distance = data()->img.addr + \
 		(y * data()->img.line_len + x * (data()->img.bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	*(unsigned int *)distance = color;
 }
 
 void	draw_vertical_line(int x)

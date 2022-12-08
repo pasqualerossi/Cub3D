@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:56:40 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/07 19:20:34 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/08 14:41:27 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ typedef struct s_var
 	double			direction_y;
 	double			plane_x;
 	double			plane_y;
-	double			time;
-	double			old_time;
 	double			camera_x;
 	double			ray_direction_x;
 	double			ray_direction_y;
@@ -173,7 +171,6 @@ typedef struct s_ray
 	int		step_x;
 	int		step_y;
 	int		side;
-	double	ratio;
 }			t_ray;
 
 //------game_utils_folder-------//
@@ -183,7 +180,7 @@ int				ft_array_length(char **arr);
 void			ft_free(char ***arr);
 char			**ft_reallocation(char **ptr, int size);
 const char		*get_exit(const char *file);
-unsigned long	rgb_to_hex(int r, int g, int b);
+unsigned long	rgb_to_hex(int red, int green, int blue);
 
 // get_next_line.c
 int				get_next_line(int fd, char **line);

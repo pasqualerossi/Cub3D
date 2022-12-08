@@ -6,13 +6,13 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:45:48 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/07 18:18:04 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/08 14:29:38 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	set_side_dist(t_ray *ray, t_point pos)
+static void	set_side_distance(t_ray *ray, t_point pos)
 {
 	if (ray->ray_dir.x < 0)
 		ray->side_dist.x = (pos.x - (double)ray->map_x) * ray->delta_dist.x;
@@ -36,7 +36,7 @@ static void	set_step(t_ray *ray)
 		ray->step_y = 1;
 }
 
-static void	set_delta_dist(t_ray *ray)
+static void	set_delta_distance(t_ray *ray)
 {
 	if (ray->ray_dir.y == 0)
 	{
@@ -68,7 +68,7 @@ void	set_ray(t_state *state, t_ray *ray, double camera_x)
 	ray->ray_dir.y = state->dir.y + state->plane.y * camera_x;
 	ray->map_x = (int)state->pos.x;
 	ray->map_y = (int)state->pos.y;
-	set_delta_dist(ray);
+	set_delta_distance(ray);
 	set_step(ray);
-	set_side_dist(ray, state->pos);
+	set_side_distance(ray, state->pos);
 }

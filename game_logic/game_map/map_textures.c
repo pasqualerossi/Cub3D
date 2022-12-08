@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:21:50 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/07 19:54:57 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/08 11:20:15 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,15 +104,15 @@ void	fill_texture_array(int i)
 int	init_textures(void)
 {
 	int		i;
-	void	*tmp;
+	void	*temporary;
 	int		*addr;
 
 	i = 0;
 	while (i < 4)
 	{
-		tmp = mlx_xpm_file_to_image(data()->mlx, data()->xpm[i], \
+		temporary = mlx_xpm_file_to_image(data()->mlx, data()->xpm[i], \
 			&(data()->img2[i].width), &(data()->img2[i].height));
-		data()->img2[i].ptr_img = tmp;
+		data()->img2[i].ptr_img = temporary;
 		if (!data()->img2[i].ptr_img)
 			return (1);
 		addr = (int *) mlx_get_data_addr(data()->img2[i].ptr_img, \

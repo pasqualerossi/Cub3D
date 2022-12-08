@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:20:09 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/07 19:12:31 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:41:54 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	map(char *line)
 
 void	init(void)
 {
-	void	*tmp;
+	void	*temporary;
 
 	data()->mlx = mlx_init();
 	if (init_textures() == 1)
@@ -55,8 +55,9 @@ void	init(void)
 		ft_exit_init("Error\nCannot load colors\n");
 	if (validate_map() == 1)
 		ft_exit_init("Error\nInvalid map\n");
-	tmp = mlx_new_window(data()->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
-	data()->win = tmp;
+	temporary = mlx_new_window(data()->mlx, SCREEN_WIDTH, SCREEN_HEIGHT,
+			"cub3D");
+	data()->win = temporary;
 }
 
 int	parse_map(int fd)
