@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:56:40 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/08 14:41:27 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/12 12:18:24 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,29 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-# include <stdio.h>
-# include <stddef.h>
 # include <fcntl.h>
 # include <limits.h>
 # include "../minilibx/mlx.h"
 
 // screen
+
 # define SCREEN_HEIGHT 			900
 # define SCREEN_WIDTH 			1400
 
 // texture
+
 # define TEXTURE_HEIGHT 			64
 # define TEXTURE_WIDTH 				64
 
 // game controls
+
 # define ESC 					53
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_EXIT			17
 
 // player controls
+
 # define W 						13
 # define A 						0
 # define S 						1
@@ -160,6 +162,8 @@ typedef struct s_cub
 	t_key			key;
 }				t_cub;
 
+// raycasting struct
+
 typedef struct s_ray
 {
 	t_point	ray_dir;
@@ -173,34 +177,7 @@ typedef struct s_ray
 	int		side;
 }			t_ray;
 
-//------game_utils_folder-------//
-
-// game_utils.c
-int				ft_array_length(char **arr);
-void			ft_free(char ***arr);
-char			**ft_reallocation(char **ptr, int size);
-const char		*get_exit(const char *file);
-unsigned long	rgb_to_hex(int red, int green, int blue);
-
-// get_next_line.c
-int				get_next_line(int fd, char **line);
-int				ft_new_line(char *buf);
-
-// libft.c
-void			*ft_calloc(size_t count, size_t size);
-
-char			**ft_split(char const *str, char c);
-char			*ft_strchr(const char *s, int i);
-char			*ft_strrchr(const char *s, int c);
-char			*ft_strdup(const char *s);
-char			*ft_substr(char const *s, unsigned int start, size_t len);
-int				ft_strncmp(const char *s1, char *s2, size_t n);
-int				ft_atoi(const char *str);
-
-size_t			ft_strlen(const char *s);
-size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
-
-//------game_map_folder-------//
+//---------game_map_folder----------//
 
 // map_colours.c
 int				init_colours(void);
@@ -265,9 +242,36 @@ void			move_right(void);
 void			rotate_right(void);
 void			rotate_left(void);
 
-//------game_main-------//
+//------------game_utils_folder------------//
 
-// cub3d.c
+// game_utils.c
+int				ft_array_length(char **arr);
+void			ft_free(char ***arr);
+char			**ft_reallocation(char **ptr, int size);
+const char		*get_exit(const char *file);
+unsigned long	rgb_to_hex(int red, int green, int blue);
+
+// get_next_line.c
+int				get_next_line(int fd, char **line);
+int				ft_new_line(char *buf);
+
+// libft.c
+void			*ft_calloc(size_t count, size_t size);
+
+char			**ft_split(char const *str, char c);
+char			*ft_strchr(const char *s, int i);
+char			*ft_strrchr(const char *s, int c);
+char			*ft_strdup(const char *s);
+char			*ft_substr(char const *s, unsigned int start, size_t len);
+int				ft_strncmp(const char *s1, char *s2, size_t n);
+int				ft_atoi(const char *str);
+
+size_t			ft_strlen(const char *s);
+size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
+
+//---------game_main----------//
+
+// main.c
 int				quit_game(void);
 
 t_cub			*data(void);
