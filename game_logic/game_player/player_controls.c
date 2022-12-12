@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:30:13 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/07 18:16:46 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/12 13:40:39 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@ int	key_release(int keycode)
 void	hooks(void)
 {
 	if (data()->key.w == 1)
-		move_forward();
+		player_move_forward();
 	if (data()->key.s == 1)
-		move_backwards();
+		player_move_backwards();
 	if (data()->key.a == 1)
-		move_left();
+		player_move_left();
 	if (data()->key.d == 1)
-		move_right();
+		player_move_right();
 	if (data()->key.left == 1)
-		rotate_left();
+		player_rotate_left();
 	if (data()->key.right == 1)
-		rotate_right();
+		player_rotate_right();
 }

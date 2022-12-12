@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:56:40 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/12 12:18:24 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/12 13:44:22 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,10 @@ typedef struct s_var
 
 typedef struct s_img
 {
-	void	*ptr_img;
-	char	*addr;
+	void	*pointer_to_image;
+	char	*address;
 	int		bits_per_pixel;
-	int		line_len;
+	int		line_length;
 	int		endian;
 	int		width;
 	int		height;
@@ -122,10 +122,10 @@ typedef struct s_img
 
 typedef struct s_img2
 {
-	void	*ptr_img;
-	int		*addr;
+	void	*pointer_to_image;
+	int		*address;
 	int		bits_per_pixel;
-	int		line_len;
+	int		line_length;
 	int		endian;
 	int		width;
 	int		height;
@@ -189,6 +189,7 @@ void			draw_ceiling(void);
 
 // map_logic.c
 void			init(void);
+
 int				parse_map(int fd);
 
 // map_parse.c
@@ -233,14 +234,12 @@ int				key_release(int keycode);
 void			hooks(void);
 
 // player_movement.c
-void			move_forward(void);
-void			move_backwards(void);
-void			move_left(void);
-void			move_right(void);
-
-// player_rotate.c
-void			rotate_right(void);
-void			rotate_left(void);
+void			player_move_forward(void);
+void			player_move_backwards(void);
+void			player_move_left(void);
+void			player_move_right(void);
+void			player_rotate_right(void);
+void			player_rotate_left(void);
 
 //------------game_utils_folder------------//
 
@@ -263,6 +262,7 @@ char			*ft_strchr(const char *s, int i);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strdup(const char *s);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
+
 int				ft_strncmp(const char *s1, char *s2, size_t n);
 int				ft_atoi(const char *str);
 

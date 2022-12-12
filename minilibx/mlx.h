@@ -79,7 +79,7 @@ void	*mlx_new_image(void *mlx_ptr,int width,int height);
 /*
 **  return void *0 if failed
 */
-char	*mlx_get_data_addr(void *img_ptr, int *bits_per_pixel,
+char	*mlx_get_data_address(void *img_ptr, int *bits_per_pixel,
 			   int *size_line, int *endian);
 /*
 **  endian : 0 = sever X is little endian, 1 = big endian

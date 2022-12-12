@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:12:06 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/08 14:39:58 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/12 13:43:07 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	mlx_place_pixel(int x, int y, int color)
 {
 	char	*distance;
 
-	distance = data()->img.addr + \
-		(y * data()->img.line_len + x * (data()->img.bits_per_pixel / 8));
+	distance = data()->img.address + \
+		(y * data()->img.line_length + x * (data()->img.bits_per_pixel / 8));
 	*(unsigned int *)distance = color;
 }
 

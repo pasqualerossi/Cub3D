@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:21:50 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/08 11:20:15 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/12 13:43:07 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	fill_texture_array(int i)
 		while (++x < data()->img2[i].width)
 		{
 			data()->texture[i][data()->img2[i].height * y + x] = \
-				(data()->img2[i].addr[data()->img2[i].height * y + x]);
+				(data()->img2[i].address[data()->img2[i].height * y + x]);
 		}
 	}
 }
@@ -105,24 +105,24 @@ int	init_textures(void)
 {
 	int		i;
 	void	*temporary;
-	int		*addr;
+	int		*address;
 
 	i = 0;
 	while (i < 4)
 	{
 		temporary = mlx_xpm_file_to_image(data()->mlx, data()->xpm[i], \
 			&(data()->img2[i].width), &(data()->img2[i].height));
-		data()->img2[i].ptr_img = temporary;
-		if (!data()->img2[i].ptr_img)
+		data()->img2[i].pointer_to_image = temporary;
+		if (!data()->img2[i].pointer_to_image)
 			return (1);
-		addr = (int *) mlx_get_data_addr(data()->img2[i].ptr_img, \
-			&data()->img2[i].bits_per_pixel, &data()->img2[i].line_len, \
+		address = (int *) mlx_get_data_address(data()->img2[i].pointer_to_image, \
+			&data()->img2[i].bits_per_pixel, &data()->img2[i].line_length, \
 			&data()->img2[i].endian);
-		data()->img2[i].addr = addr;
-		if (!data()->img2[i].addr)
+		data()->img2[i].address = address;
+		if (!data()->img2[i].address)
 			return (1);
 		fill_texture_array(i);
-		mlx_destroy_image(data()->mlx, data()->img2[i].ptr_img);
+		mlx_destroy_image(data()->mlx, data()->img2[i].pointer_to_image);
 		i++;
 	}
 	return (0);

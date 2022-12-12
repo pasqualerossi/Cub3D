@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:59:16 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/07 18:56:43 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/12 13:43:07 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 int	launch_game(void)
 {
 	void	*img;
-	char	*addr;
+	char	*address;
 
 	img = mlx_new_image(data()->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	data()->img.ptr_img = img;
-	addr = mlx_get_data_addr(data()->img.ptr_img, \
-		&data()->img.bits_per_pixel, &data()->img.line_len, \
+	data()->img.pointer_to_image = img;
+	address = mlx_get_data_address(data()->img.pointer_to_image, \
+		&data()->img.bits_per_pixel, &data()->img.line_length, \
 		&data()->img.endian);
-	data()->img.addr = addr;
+	data()->img.address = address;
 	draw_floor();
 	draw_ceiling();
 	raycast_loop();
@@ -31,8 +31,8 @@ int	launch_game(void)
 	data()->var.move_speed = data()->var.frame_time * 5.0;
 	data()->var.rotate_speed = data()->var.frame_time * 3.0;
 	mlx_put_image_to_window(data()->mlx, data()->win, \
-		data()->img.ptr_img, 0, 0);
-	mlx_destroy_image(data()->mlx, data()->img.ptr_img);
+		data()->img.pointer_to_image, 0, 0);
+	mlx_destroy_image(data()->mlx, data()->img.pointer_to_image);
 	return (0);
 }
 
