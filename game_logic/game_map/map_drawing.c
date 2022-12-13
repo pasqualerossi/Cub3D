@@ -6,19 +6,19 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:12:06 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/12 13:43:07 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/13 11:52:55 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	mlx_place_pixel(int x, int y, int color)
+void	mlx_place_pixel(int x, int y, int colour)
 {
 	char	*distance;
 
 	distance = data()->img.address + \
 		(y * data()->img.line_length + x * (data()->img.bits_per_pixel / 8));
-	*(unsigned int *)distance = color;
+	*(unsigned int *)distance = colour;
 }
 
 void	draw_vertical_line(int x)
