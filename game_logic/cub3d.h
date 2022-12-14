@@ -6,14 +6,12 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:56:40 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/12 13:44:22 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/14 15:44:51 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-
-// libraries
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -179,61 +177,37 @@ typedef struct s_ray
 
 //---------game_map_folder----------//
 
-// map_colours.c
 int				init_colours(void);
+int				parse_info(int fd);
+int				init_textures(void);
+int				validate_map(void);
+int				check_characters(void);
+int				parse_map(int fd);
+int				parse(char *file);
 
-// map_drawing.c
 void			mlx_place_pixel(int x, int y, int color);
 void			draw_floor(void);
 void			draw_ceiling(void);
-
-// map_logic.c
 void			init(void);
-
-int				parse_map(int fd);
-
-// map_parse.c
-int				parse(char *file);
-
-// map_raycasting_calucations.c
 void			calculate_ray_position_and_direction(int x);
 void			set_box_position(void);
 void			calculate_delta_distance(void);
 void			calculate_step_and_side_distance_x(void);
 void			calculate_step_and_side_distance_y(void);
-
-// map_raycasting.c
 void			dda(void);
 void			raycast_loop(void);
-
-// map_screen_calucations.c
 void			calculate_distance_perspective(void);
 void			calculate_vertical_line_height(void);
 void			calculate_draw_start_and_draw_end(void);
-
-// map_texture_calucations.c
 void			calculate_texture_x(void);
 void			draw_vertical_texture_stripe(int x);
 
-// map_textures.c
-int				parse_info(int fd);
-int				init_textures(void);
-
-// map_validation.c
-int				validate_map(void);
-
-// map_vectors.c
-int				check_characters(void);
-
 //------game_player_folder-------//
 
-// player_controls.c
 int				key_press(int keycode);
 int				key_release(int keycode);
 
 void			hooks(void);
-
-// player_movement.c
 void			player_move_forward(void);
 void			player_move_backwards(void);
 void			player_move_left(void);
@@ -243,37 +217,31 @@ void			player_rotate_left(void);
 
 //------------game_utils_folder------------//
 
-// game_utils.c
-int				ft_array_length(char **arr);
-void			ft_free(char ***arr);
-char			**ft_reallocation(char **ptr, int size);
 const char		*get_exit(const char *file);
 unsigned long	rgb_to_hex(int red, int green, int blue);
 
-// get_next_line.c
 int				get_next_line(int fd, char **line);
 int				ft_new_line(char *buf);
+int				ft_array_length(char **arr);
+int				ft_strncmp(const char *s1, char *s2, size_t n);
+int				ft_atoi(const char *str);
 
-// libft.c
+void			ft_free(char ***arr);
 void			*ft_calloc(size_t count, size_t size);
 
+char			**ft_reallocation(char **ptr, int size);
 char			**ft_split(char const *str, char c);
 char			*ft_strchr(const char *s, int i);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strdup(const char *s);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 
-int				ft_strncmp(const char *s1, char *s2, size_t n);
-int				ft_atoi(const char *str);
-
 size_t			ft_strlen(const char *s);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
-//---------game_main----------//
+//---------main.c----------//
 
-// main.c
 int				quit_game(void);
-
 t_cub			*data(void);
 
 #endif
