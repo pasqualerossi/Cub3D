@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:53:48 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/07 19:40:37 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/14 15:50:01 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ static void	init_vectors(int x, int y)
 		set_values(1, 0, 0, 0.66);
 	else if (data()->map[y][x] == 'W')
 		set_values(-1, 0, 0, -0.66);
+}
+
+char	*ft_strchr(const char *s, int i)
+{
+	while (*s)
+	{
+		if (*s == i)
+			return ((char *)s);
+		s++;
+	}
+	if (i == '\0')
+		return ((char *)s);
+	return (0);
 }
 
 int	check_characters(void)

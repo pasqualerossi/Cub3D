@@ -6,11 +6,28 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:59:16 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/12 13:43:07 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/14 15:57:06 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	key_release(int keycode)
+{
+	if (keycode == W)
+		data()->key.w = 0;
+	else if (keycode == S)
+		data()->key.s = 0;
+	else if (keycode == A)
+		data()->key.a = 0;
+	else if (keycode == D)
+		data()->key.d = 0;
+	else if (keycode == LEFT)
+		data()->key.left = 0;
+	else if (keycode == RIGHT)
+		data()->key.right = 0;
+	return (0);
+}
 
 int	launch_game(void)
 {

@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 15:15:52 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/07 18:58:17 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:19:59 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,19 @@ void	*ft_calloc(size_t count, size_t size)
 	return (ret);
 }
 
-char	*ft_strchr(const char *s, int i)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	while (*s)
+	size_t	i;
+	char	*d;
+	char	*s;
+
+	i = 0;
+	d = (char *)dest;
+	s = (char *)src;
+	while (i < n)
 	{
-		if (*s == i)
-			return ((char *)s);
-		s++;
+		d[i] = s[i];
+		i++;
 	}
-	if (i == '\0')
-		return ((char *)s);
-	return (0);
+	return (dest);
 }

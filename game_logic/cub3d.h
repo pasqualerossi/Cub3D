@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:56:40 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/14 15:44:51 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:16:07 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,26 +194,20 @@ void			set_box_position(void);
 void			calculate_delta_distance(void);
 void			calculate_step_and_side_distance_x(void);
 void			calculate_step_and_side_distance_y(void);
-void			dda(void);
 void			raycast_loop(void);
 void			calculate_distance_perspective(void);
 void			calculate_vertical_line_height(void);
 void			calculate_draw_start_and_draw_end(void);
-void			calculate_texture_x(void);
-void			draw_vertical_texture_stripe(int x);
 
 //------game_player_folder-------//
 
 int				key_press(int keycode);
-int				key_release(int keycode);
 
 void			hooks(void);
 void			player_move_forward(void);
 void			player_move_backwards(void);
 void			player_move_left(void);
 void			player_move_right(void);
-void			player_rotate_right(void);
-void			player_rotate_left(void);
 
 //------------game_utils_folder------------//
 
@@ -229,12 +223,8 @@ int				ft_atoi(const char *str);
 void			ft_free(char ***arr);
 void			*ft_calloc(size_t count, size_t size);
 
-char			**ft_reallocation(char **ptr, int size);
 char			**ft_split(char const *str, char c);
-char			*ft_strchr(const char *s, int i);
-char			*ft_strrchr(const char *s, int c);
 char			*ft_strdup(const char *s);
-char			*ft_substr(char const *s, unsigned int start, size_t len);
 
 size_t			ft_strlen(const char *s);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);

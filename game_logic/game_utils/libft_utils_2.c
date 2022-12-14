@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 15:18:40 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/07 18:18:23 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:19:27 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,33 @@ int	ft_strncmp(const char *s1, char *s2, size_t n)
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char	*sub;
+	size_t	i;
 
-	if (!s)
-		return (NULL);
-	if ((unsigned int)ft_strlen(s) < start)
-		return (ft_strdup(""));
-	if (ft_strlen(&s[start]) < len)
-		len = ft_strlen(&s[start]);
-	sub = (char *)malloc(sizeof(char) * len + 1);
-	if (!sub)
-		return (NULL);
-	ft_strlcpy(sub, &s[start], len + 1);
-	return (sub);
+	if (!dst)
+		return (0);
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	i = 0;
+	while (src[i] != '\0' && i < dstsize - 1)
+	{
+		((char *)dst)[i] = ((char *)src)[i];
+		i++;
+	}
+	if (dstsize != 0)
+		((char *)dst)[i] = '\0';
+	return (ft_strlen(src));
+}
+
+int	ft_new_line(char *buf)
+{
+	int	i;
+
+	i = 0;
+	while (buf[i] && buf[i] != 10)
+		i++;
+	if (buf[i] == 10)
+		return (1);
+	return (0);
 }

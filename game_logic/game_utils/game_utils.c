@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:39:39 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/08 14:31:25 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/14 15:50:34 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,20 @@ void	ft_free(char ***array)
 	*array = NULL;
 }
 
-char	**ft_reallocation(char **pointer, int size)
+char	*ft_strrchr(const char *s, int c)
 {
 	int		i;
-	char	**new_pointer;
 
-	i = 0;
-	new_pointer = malloc(sizeof(char *) * size);
-	if (!new_pointer)
-		return (NULL);
-	while (pointer[i])
+	i = ft_strlen(s);
+	if (c == 0)
+		return ((char *)s + i);
+	while (i >= 0)
 	{
-		new_pointer[i] = pointer[i];
-		i++;
+		if (s[i] == c)
+			return ((char *)s + i);
+		i--;
 	}
-	new_pointer[i] = NULL;
-	new_pointer[i + 1] = NULL;
-	free(pointer);
-	return (new_pointer);
+	return (NULL);
 }
 
 const char	*get_exit(const char *file)

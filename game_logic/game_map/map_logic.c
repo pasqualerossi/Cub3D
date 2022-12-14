@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:20:09 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/08 16:41:54 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/14 15:49:20 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,26 @@ static void	ft_exit_init(char *s)
 	ft_free(&data()->rgb);
 	ft_free(&data()->map);
 	exit(1);
+}
+
+char	**ft_reallocation(char **pointer, int size)
+{
+	int		i;
+	char	**new_pointer;
+
+	i = 0;
+	new_pointer = malloc(sizeof(char *) * size);
+	if (!new_pointer)
+		return (NULL);
+	while (pointer[i])
+	{
+		new_pointer[i] = pointer[i];
+		i++;
+	}
+	new_pointer[i] = NULL;
+	new_pointer[i + 1] = NULL;
+	free(pointer);
+	return (new_pointer);
 }
 
 static int	map(char *line)
