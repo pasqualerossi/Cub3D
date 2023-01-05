@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:45:48 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/08 14:29:38 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/16 12:59:42 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ static void	set_delta_distance(t_ray *ray)
 
 void	set_ray(t_state *state, t_ray *ray, double camera_x)
 {
-	ray->ray_dir.x = state->dir.x + state->plane.x * camera_x;
-	ray->ray_dir.y = state->dir.y + state->plane.y * camera_x;
-	ray->map_x = (int)state->pos.x;
-	ray->map_y = (int)state->pos.y;
+	ray->ray_dir.x = state->direction.x + state->plane.x * camera_x;
+	ray->ray_dir.y = state->direction.y + state->plane.y * camera_x;
+	ray->map_x = (int)state->position.x;
+	ray->map_y = (int)state->position.y;
 	set_delta_distance(ray);
 	set_step(ray);
-	set_side_distance(ray, state->pos);
+	set_side_distance(ray, state->position);
 }

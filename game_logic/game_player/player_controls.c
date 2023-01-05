@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:30:13 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/14 15:57:11 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/16 13:10:42 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ int	key_press(int keycode)
 		data()->key.left = 1;
 	else if (keycode == RIGHT)
 		data()->key.right = 1;
-	else if (keycode == P)
-		data()->key.p = !data()->key.p;
 	return (0);
 }
 

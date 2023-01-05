@@ -6,7 +6,7 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:21:50 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/13 13:37:28 by prossi           ###   ########.fr       */
+/*   Updated: 2022/12/16 13:03:53 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int	parse_info(int fd)
 	char	*line;
 	int		ret;
 
-	data()->xpm = ft_calloc(sizeof(char *) , 5);
+	data()->xpm = ft_calloc(sizeof(char *), 5);
 	if (!data()->xpm)
 		return (1);
-	data()->rgb = ft_calloc(sizeof(char *) , 3);
+	data()->rgb = ft_calloc(sizeof(char *), 3);
 	if (!data()->rgb)
 		return (1);
 	while (ft_array_length(data()->xpm) != 4 \

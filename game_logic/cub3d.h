@@ -6,12 +6,14 @@
 /*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:56:40 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/14 16:16:07 by prossi           ###   ########.fr       */
+/*   Updated: 2023/01/05 13:57:45 by prossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+// libraries
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -22,8 +24,8 @@
 
 // screen
 
-# define SCREEN_HEIGHT 			900
-# define SCREEN_WIDTH 			1400
+# define SCREEN_HEIGHT 			1000
+# define SCREEN_WIDTH 			1500
 
 // texture
 
@@ -47,7 +49,6 @@
 # define DOWN 					125
 # define LEFT 					123
 # define RIGHT 					124
-# define P 						35
 
 // game structs
 
@@ -59,8 +60,8 @@ typedef struct s_point
 
 typedef struct s_state
 {
-	t_point			pos;
-	t_point			dir;
+	t_point			position;
+	t_point			direction;
 	t_point			plane;
 }			t_state;
 
